@@ -1,0 +1,275 @@
+@import "~bootstrap/scss/functions";
+
+$primary: rgba(255,120,168,1);
+
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/maps";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/root";
+
+@import "~bootstrap/scss/utilities";
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "br-10": (
+      property: border-radius,
+      class: br,
+      responsive: true,
+      values: (10: 10px),
+    )
+  )
+);
+
+@import "~bootstrap/scss/utilities/api";
+
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/containers";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/transitions";
+
+$navbar-dark-active-color: $primary;
+
+@import "~bootstrap/scss/nav";
+@import "~bootstrap/scss/navbar";
+
+$bg-color: #f7fbff;
+$secondary-color: rgba(219,230,242,1);
+$heading-color: #354b6a;
+$text-color: #95ABC9;
+
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+
+@mixin label-background-color {
+    background: rgb(219,230,242);
+    background: -moz-linear-gradient(242deg, rgba(219,230,242,1) 0%, rgba(206,219,237,1) 50%);
+    background: -webkit-linear-gradient(242deg, rgba(219,230,242,1) 0%, rgba(206,219,237,1) 50%);
+    background: linear-gradient(242deg, rgba(219,230,242,1) 0%, rgba(206,219,237,1) 50%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#dbe6f2",endColorstr="#cedbed",GradientType=1);
+}
+@mixin btn-background-color {
+    background: rgb(255,144,188);
+    background: -moz-linear-gradient(242deg, rgba(255,144,188,1) 0%, rgba(255,120,168,1) 50%);
+    background: -webkit-linear-gradient(242deg, rgba(255,144,188,1) 0%, rgba(255,120,168,1) 50%);
+    background: linear-gradient(242deg, rgba(255,144,188,1) 0%, rgba(255,120,168,1) 50%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff90bc",endColorstr="#ff78a8",GradientType=1);
+    color: #fff;
+}
+@mixin boxShadow {
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+@mixin displayFlexRow {
+    display: flex;
+    flex-direction: row;
+}
+@mixin displayFlexColumn {
+    display: flex;
+    flex-direction: column;
+}
+@mixin removeBorder {
+    border: none;
+    outline: none;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    background-color: $bg-color;
+}
+button, select, [type=checkbox] {
+    cursor: pointer;
+}
+.profile-form {
+    @include displayFlexColumn;
+    gap: 32px;
+    border-radius: 20px;
+}
+.profile-form__input {
+    @include displayFlexRow;
+    gap: 16px;
+}
+.profile-form__input.input,
+.profile-form__input.select {
+    gap: 0;
+    background-color: #fff;
+    border-radius: 10px;
+}
+label.profile-form__label {
+    @include label-background-color;
+    color: $heading-color;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px 0 0 10px;
+    min-width: 100px;
+}
+[id |= profiles]:not(#profiles-login) {
+    @include removeBorder;
+    width: 100%;
+    border-radius: 0 10px 10px 0;
+    padding: 0 10px;
+    border: 1px solid $secondary-color;
+    border-left: none;
+}
+.profile-form__checkbox {
+    font-size: 0.875rem;
+    color: $text-color
+}
+.profile-form__generate {
+    @include btn-background-color;
+    @include removeBorder;
+    @include boxShadow;
+    padding: 15px 0;
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+.profile {
+    background: #fff;
+    @include boxShadow;
+    padding: 16px;
+    cursor: pointer;
+    position: relative;
+}
+.profile__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid transparent;
+    transition: all 0.5s;
+    &:hover {
+        border: 2px solid $primary;
+    }
+}
+.profile__number, .profile-card__number {
+    @include btn-background-color;
+    min-width: 50px;
+    text-align: center;
+    padding: 0 8px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    border-radius: 0 10px 10px 0;
+    font-size: 1.125rem;
+}
+.profile__name {
+    span {
+        font-size: 1.125rem;
+        color: $heading-color;
+        font-weight: 600;
+    }
+}
+.profile__flag {
+    width: 16px;
+    height: 12px;
+}
+.profile__email {
+    font-size: 0.75rem;
+    color: $text-color;
+}
+.profiles-card {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+.profiles-card__overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #00000085;
+    width: 100vw;
+    height: 100vh;
+}
+.profile-card {
+    background: #fff;
+    position: relative;
+    width: 80%;
+    padding: 30px 80px 30px 30px;
+    svg:not(.profile-card__gender svg) {
+        height: 18px;
+    }
+}
+.profile-card__image {
+    width: 100px;
+    img {
+        width: 100%;
+        border-radius: 50%;
+    }
+}
+.profile-card__name {
+    span {
+        font-size: 1.5rem;
+        color: $heading-color;
+        font-weight: 800;
+    }
+}
+.profile-card__email {
+    font-size: 0.9rem;
+    color: $text-color;
+}
+.profile-card__cell {
+    font-weight: 700;
+}
+.profile-card__address {
+    color: $text-color;
+}
+.profile-card__age,
+.profile-card__gender,
+.profile-card__username,
+.profile-card__password {
+    @include label-background-color;
+    color: $heading-color;
+}
+.bi-gender-male, .bi-gender-female, .profile-card__login {
+    display: none;
+}
+@include media-breakpoint-up(sm) {
+    .profile-card {
+        width: 500px;
+    }
+}
+@include media-breakpoint-up(lg) {
+    .nav-item {
+        position: relative;
+        transition: all 300ms cubic-bezier(0.075, 0.82, 0.165, 1);
+        &::after, &::before {
+            content: "";
+            position: absolute;
+            display: block;
+            border: 0px solid transparent;
+            width: 0%;
+            height: 0%;
+            transition: all 0.3s ease;
+        }
+        &::after {
+            width: 0%;
+            height: 0%;
+            top: 0;
+            left: 0;
+            border-top: 2px solid transparent;
+            border-left: 2px solid transparent;
+        }
+        &::before {
+            width: 0%;
+            height: 0%;
+            right: 0;
+            bottom: 0;
+            border-bottom: 2px solid transparent;
+            border-right: 2px solid transparent;
+        }
+        &:hover:after, &:hover:before {
+            width: 10px;
+            height: 10px;
+            border-color: $primary;
+        }
+    
+    }
+}

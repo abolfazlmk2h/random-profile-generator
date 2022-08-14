@@ -1,0 +1,23 @@
+{
+  "name": "randomprofile",
+  "version": "1.0.0",
+  "description": "",
+  "source": "src/index.html",
+  "main": "src/js/script.js",
+  "scripts": {
+    "start": "parcel",
+    "build": "parcel build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.6.2",
+    "parcel": "^2.6.2"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.5",
+    "bootstrap": "^5.2.0",
+    "uuid": "^8.3.2"
+  }
+}
