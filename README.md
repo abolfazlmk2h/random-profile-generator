@@ -13,5 +13,6 @@ after installing packages, use
 
 ```bash
 $ npm start
+```
 
 to run parcel and parcel will bundle the project for you. Visit `http://localhost:1234` in your browser to see bundled project.
