@@ -9,7 +9,7 @@ Using npm:
 ```bash
 $ npm install
 ```
-after installing packages, use
+After installing packages, use
 
 ```bash
 $ npm start
